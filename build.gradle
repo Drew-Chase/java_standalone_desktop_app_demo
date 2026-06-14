@@ -51,10 +51,10 @@ tasks.register('cmakeConfigure', Exec) {
     outputs.dir(cmakeBuildDir)
 
 
-    // cmake.exe -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=C:/Users/drew_/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe -G Ninja -S .\launcher -B .\launcher\bin\obj\release
+    // cmake.exe -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=ninja.exe -G Ninja -S .\launcher -B .\launcher\bin\obj\release
     commandLine 'cmake',
             '-DCMAKE_BUILD_TYPE=Release',
-            '-DCMAKE_MAKE_PROGRAM=C:/Users/drew_/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe',
+            '-DCMAKE_MAKE_PROGRAM=ninja.exe',
             '-S', launcherDir.absolutePath,
             '-B', cmakeBuildDir.absolutePath,
             '-G', 'Ninja'
@@ -101,7 +101,7 @@ tasks.register('jlink', Exec) {
     }
 
     commandLine jlinkExe.absolutePath,
-            '--add-modules', 'java.desktop',   // add whatever your app needs
+            '--add-modules', 'java.desktop',
             '--output', runtimeDir.absolutePath,
             '--strip-debug',
             '--compress=2',
